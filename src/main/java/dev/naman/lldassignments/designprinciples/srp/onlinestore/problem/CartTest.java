@@ -1,5 +1,7 @@
 package dev.naman.lldassignments.designprinciples.srp.onlinestore.problem;
 
+import dev.naman.lldassignments.designprinciples.srp.onlinestore.solution.Cart;
+import dev.naman.lldassignments.designprinciples.srp.onlinestore.solution.ProductCatalog;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -7,12 +9,11 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class CartTest {
 
-    private ProductCatalog productCatalog;
     private Cart cart;
 
     @BeforeEach
     public void setUp() {
-        productCatalog = new ProductCatalog();
+        ProductCatalog productCatalog = new ProductCatalog();
         productCatalog.addProduct("Apple", 0.99);
         productCatalog.addProduct("Banana", 0.59);
         cart = new Cart(productCatalog);

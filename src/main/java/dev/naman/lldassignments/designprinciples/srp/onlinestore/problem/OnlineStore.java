@@ -1,38 +1,24 @@
 package dev.naman.lldassignments.designprinciples.srp.onlinestore.problem;
 
-import java.util.HashMap;
-import java.util.Map;
-
 public class OnlineStore {
-
-    private Map<String, Double> products;
-
-    public OnlineStore() {
-        products = new HashMap<>();
+    private ProductCatalog productCatalog;
+    private final InvoicePrinter invoicePrinter;
+    private Cart cart;
+    ProductCatalog getProductCatalog(){
+        return this.productCatalog;
+    }
+    OnlineStore(){
+        this.productCatalog=new ProductCatalog();
+        this.invoicePrinter=new InvoicePrinter(this.productCatalog);
+        this.cart=new Cart(this.productCatalog);
+    }
+    public void printInvoice(Cart cart){
+        this.invoicePrinter.printInvoice(cart);
     }
 
-    public void addProduct(String name, double price) {
-        products.put(name, price);
+    Cart createCart(){
+        return this.cart;
     }
 
-    public void removeProduct(String name) {
-        products.remove(name);
-    }
 
-    public double calculateTotal(Map<String, Integer> cart) {
-        double total = 0;
-        for (String item : cart.keySet()) {
-            total += products.get(item) * cart.get(item);
-        }
-        return total;
-    }
-
-    public void printInvoice(Map<String, Integer> cart) {
-        double total = calculateTotal(cart);
-        System.out.println("Invoice:");
-        for (String item : cart.keySet()) {
-            System.out.printf("%s: %d x $%.2f%n", item, cart.get(item), products.get(item));
-        }
-        System.out.printf("Total: $%.2f%n", total);
-    }
 }

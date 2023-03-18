@@ -1,5 +1,4 @@
 package dev.naman.lldassignments.designprinciples.srp.onlinestore.problem;
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -11,8 +10,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 public class OnlineStoreTest {
 
-    private dev.naman.lldassignments.designprinciples.srp.onlinestore.solution.OnlineStore onlineStore;
-
+private OnlineStore onlineStore;
     @BeforeEach
     public void setUp() {
         onlineStore = new OnlineStore();
